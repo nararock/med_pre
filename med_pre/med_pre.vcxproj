@@ -143,11 +143,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="man.h" />
+    <ClInclude Include="personal_data.h" />
+    <ClInclude Include="presure_data.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="man.cpp" />
     <ClCompile Include="med_pre.cpp" />
+    <ClCompile Include="personal_data.cpp" />
+    <ClCompile Include="presure_data.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
