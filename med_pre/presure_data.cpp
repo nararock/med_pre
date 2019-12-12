@@ -1,15 +1,15 @@
-#include "stdafx.h"
+п»ї#include "stdafx.h"
 #include <iostream>
 #include "presure_data.h"
 using std::cout;
 using std::cin;
 using std::endl;
-//конструктор 
-pressure_data::pressure_data() : up_pressure(0), down_pressure(0) {};//конструктор по умолчанию
-//методы класса
+//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ 
+pressure_data::pressure_data() : up_pressure(0), down_pressure(0) {};//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
+//РјРµС‚РѕРґС‹ РєР»Р°СЃСЃР°
 void pressure_data::put_data() {
 	char temp;
-	cout << "Введите значение вашего давления в форме: верхнее значение/нижнее значение (например, 120/70).\n" << endl;
+	cout << "Р’РІРµРґРёС‚Рµ Р·РЅР°С‡РµРЅРёРµ РІР°С€РµРіРѕ РґР°РІР»РµРЅРёСЏ РІ С„РѕСЂРјРµ: РІРµСЂС…РЅРµРµ Р·РЅР°С‡РµРЅРёРµ/РЅРёР¶РЅРµРµ Р·РЅР°С‡РµРЅРёРµ (РЅР°РїСЂРёРјРµСЂ, 120/70).\n" << endl;
 	cin >> up_pressure >> temp >> down_pressure;
 }
 void pressure_data::show_data() {

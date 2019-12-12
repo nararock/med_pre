@@ -1,7 +1,7 @@
-#pragma once
-#include "personal_data.h"//хранение личных данных
-#include "presure_data.h"//хранение значений давления
-class man {//карточка пациента (личные данные, значение давления)
+п»ї#pragma once
+#include "personal_data.h"//С…СЂР°РЅРµРЅРёРµ Р»РёС‡РЅС‹С… РґР°РЅРЅС‹С…
+#include "presure_data.h"//С…СЂР°РЅРµРЅРёРµ Р·РЅР°С‡РµРЅРёР№ РґР°РІР»РµРЅРёСЏ
+class man {//РєР°СЂС‚РѕС‡РєР° РїР°С†РёРµРЅС‚Р° (Р»РёС‡РЅС‹Рµ РґР°РЅРЅС‹Рµ, Р·РЅР°С‡РµРЅРёРµ РґР°РІР»РµРЅРёСЏ)
 private:
 	personal_data person;
 	pressure_data pressure;

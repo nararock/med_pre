@@ -1,12 +1,12 @@
-#pragma once
+п»ї#pragma once
 class personal_data {
 public:
-	//поля с личными данными
+	//РїРѕР»СЏ СЃ Р»РёС‡РЅС‹РјРё РґР°РЅРЅС‹РјРё
 	char name[50];
 	char surname[50];
 	unsigned age;
 	char gender;
-	//конструктор и методы
+	//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ Рё РјРµС‚РѕРґС‹
 	personal_data();
 	void put_data();
 	void show_data();

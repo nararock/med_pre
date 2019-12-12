@@ -1,88 +1,88 @@
-#include "stdafx.h"
+п»ї#include "stdafx.h"
 #include <iostream>
-#include <fstream> // для файловых потоков
+#include <fstream> // РґР»СЏ С„Р°Р№Р»РѕРІС‹С… РїРѕС‚РѕРєРѕРІ
 #include <string>
 #include "man.h"
 using namespace std;
 man::man() : person(), pressure() {};
-void man:: put() {//запросить личные данные
+void man:: put() {//Р·Р°РїСЂРѕСЃРёС‚СЊ Р»РёС‡РЅС‹Рµ РґР°РЅРЅС‹Рµ
 	person.put_data();
 }
-void man::put_pressure() {//запись значений давления
+void man::put_pressure() {//Р·Р°РїРёСЃСЊ Р·РЅР°С‡РµРЅРёР№ РґР°РІР»РµРЅРёСЏ
 	pressure.put_data();
 	system("cls");
 }
-void man::create_name(char(&temp)[105]) {//создание персонального имени для файла из данных класса
+void man::create_name(char(&temp)[105]) {//СЃРѕР·РґР°РЅРёРµ РїРµСЂСЃРѕРЅР°Р»СЊРЅРѕРіРѕ РёРјРµРЅРё РґР»СЏ С„Р°Р№Р»Р° РёР· РґР°РЅРЅС‹С… РєР»Р°СЃСЃР°
 	char dat[5] = { ".dat" };
 	strcat_s(temp, person.name);
 	strcat_s(temp, person.surname);
 	strcat_s(temp, dat);
 }
-void man::show_persondate() {//вывод персональных данных
+void man::show_persondate() {//РІС‹РІРѕРґ РїРµСЂСЃРѕРЅР°Р»СЊРЅС‹С… РґР°РЅРЅС‹С…
 	person.show_data();
 }
-void man::save_person_data() {//сохранение персональных данных
-	char temp[105] = {};//формируем имя для файла
-	create_name(temp);//название для файла
-	ofstream outfile(temp, ios::binary | ios::out | ios::app);//создаем выходной поток для записи файла с названием temp
-	outfile.write(reinterpret_cast<char*>(&person), sizeof(person));//записываем в двоичный файл личные данные (структура)
+void man::save_person_data() {//СЃРѕС…СЂР°РЅРµРЅРёРµ РїРµСЂСЃРѕРЅР°Р»СЊРЅС‹С… РґР°РЅРЅС‹С…
+	char temp[105] = {};//С„РѕСЂРјРёСЂСѓРµРј РёРјСЏ РґР»СЏ С„Р°Р№Р»Р°
+	create_name(temp);//РЅР°Р·РІР°РЅРёРµ РґР»СЏ С„Р°Р№Р»Р°
+	ofstream outfile(temp, ios::binary | ios::out | ios::app);//СЃРѕР·РґР°РµРј РІС‹С…РѕРґРЅРѕР№ РїРѕС‚РѕРє РґР»СЏ Р·Р°РїРёСЃРё С„Р°Р№Р»Р° СЃ РЅР°Р·РІР°РЅРёРµРј temp
+	outfile.write(reinterpret_cast<char*>(&person), sizeof(person));//Р·Р°РїРёСЃС‹РІР°РµРј РІ РґРІРѕРёС‡РЅС‹Р№ С„Р°Р№Р» Р»РёС‡РЅС‹Рµ РґР°РЅРЅС‹Рµ (СЃС‚СЂСѓРєС‚СѓСЂР°)
 	outfile.close();
 }
 void man::save_pressure_data() {
-	char temp[105] = {};//формируем имя для файла
-	create_name(temp);//название для файла
+	char temp[105] = {};//С„РѕСЂРјРёСЂСѓРµРј РёРјСЏ РґР»СЏ С„Р°Р№Р»Р°
+	create_name(temp);//РЅР°Р·РІР°РЅРёРµ РґР»СЏ С„Р°Р№Р»Р°
 	ofstream outfile;
-	outfile.open(temp, ios::binary | ios::out | ios::app | ios::_Nocreate);//создаем выходной поток для записи файла с названием temp
+	outfile.open(temp, ios::binary | ios::out | ios::app | ios::_Nocreate);//СЃРѕР·РґР°РµРј РІС‹С…РѕРґРЅРѕР№ РїРѕС‚РѕРє РґР»СЏ Р·Р°РїРёСЃРё С„Р°Р№Р»Р° СЃ РЅР°Р·РІР°РЅРёРµРј temp
 	if (outfile){
-		//outfile.seekp(0, ios::end);//передвигаем указатель в конец файла
-		outfile.write(reinterpret_cast<char*>(&pressure), sizeof(pressure));//записываем структуру со значением давления в конец файла
+		//outfile.seekp(0, ios::end);//РїРµСЂРµРґРІРёРіР°РµРј СѓРєР°Р·Р°С‚РµР»СЊ РІ РєРѕРЅРµС† С„Р°Р№Р»Р°
+		outfile.write(reinterpret_cast<char*>(&pressure), sizeof(pressure));//Р·Р°РїРёСЃС‹РІР°РµРј СЃС‚СЂСѓРєС‚СѓСЂСѓ СЃРѕ Р·РЅР°С‡РµРЅРёРµРј РґР°РІР»РµРЅРёСЏ РІ РєРѕРЅРµС† С„Р°Р№Р»Р°
 		outfile.close();
 	}
 	else
 		{
-		cout << "Запись давления не была осуществлена."
-		<< "Файл с именем " << temp << " не был создан ранее для записи личных данных." << endl;
+		cout << "Р—Р°РїРёСЃСЊ РґР°РІР»РµРЅРёСЏ РЅРµ Р±С‹Р»Р° РѕСЃСѓС‰РµСЃС‚РІР»РµРЅР°."
+		<< "Р¤Р°Р№Р» СЃ РёРјРµРЅРµРј " << temp << " РЅРµ Р±С‹Р» СЃРѕР·РґР°РЅ СЂР°РЅРµРµ РґР»СЏ Р·Р°РїРёСЃРё Р»РёС‡РЅС‹С… РґР°РЅРЅС‹С…." << endl;
 		}
 }
 bool man::read_personal_data() {
-	cout << "Вход в ваш кабинет" << endl;
+	cout << "Р’С…РѕРґ РІ РІР°С€ РєР°Р±РёРЅРµС‚" << endl;
 	string temp_name, temp_surname, temp;
-	cout << "Введите ваше имя (строчными буквами)" << endl;
+	cout << "Р’РІРµРґРёС‚Рµ РІР°С€Рµ РёРјСЏ (СЃС‚СЂРѕС‡РЅС‹РјРё Р±СѓРєРІР°РјРё)" << endl;
 	cin >> temp_name;
-	cout << "Введите ваше фамилия (строчными буквами)" << endl;
+	cout << "Р’РІРµРґРёС‚Рµ РІР°С€Рµ С„Р°РјРёР»РёСЏ (СЃС‚СЂРѕС‡РЅС‹РјРё Р±СѓРєРІР°РјРё)" << endl;
 	cin >> temp_surname;
-	temp = temp_name + temp_surname + ".dat";//находим название файла
-	ifstream infile(temp, ios::binary);//поток для чтения
+	temp = temp_name + temp_surname + ".dat";//РЅР°С…РѕРґРёРј РЅР°Р·РІР°РЅРёРµ С„Р°Р№Р»Р°
+	ifstream infile(temp, ios::binary);//РїРѕС‚РѕРє РґР»СЏ С‡С‚РµРЅРёСЏ
 	if (!infile) {
-		cout << "Ошибка открытия файла или файл не существует!" << endl;
+		cout << "РћС€РёР±РєР° РѕС‚РєСЂС‹С‚РёСЏ С„Р°Р№Р»Р° РёР»Рё С„Р°Р№Р» РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚!" << endl;
 		return false;
 	}
-	infile.seekg(0, ios::beg);//устанавливаем указатель на начало файла
-	infile.read(reinterpret_cast<char*>(&person), sizeof(person));//читаем личные данные в структуру personal_data
-	cout << "Личный кабинет открыт" << endl;
+	infile.seekg(0, ios::beg);//СѓСЃС‚Р°РЅР°РІР»РёРІР°РµРј СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РЅР°С‡Р°Р»Рѕ С„Р°Р№Р»Р°
+	infile.read(reinterpret_cast<char*>(&person), sizeof(person));//С‡РёС‚Р°РµРј Р»РёС‡РЅС‹Рµ РґР°РЅРЅС‹Рµ РІ СЃС‚СЂСѓРєС‚СѓСЂСѓ personal_data
+	cout << "Р›РёС‡РЅС‹Р№ РєР°Р±РёРЅРµС‚ РѕС‚РєСЂС‹С‚" << endl;
 	infile.close();
 	return true;
 }
-unsigned man::number_of_datapressure() {//возвращает количество записанных значений давления
-	char temp[105] = {};//формируем имя для файла
-	create_name(temp);//название для файла
-	ifstream infile(temp, ios::binary);//поток для чтения
-	infile.seekg(0, ios::end);//находим количество значений давления в файле
+unsigned man::number_of_datapressure() {//РІРѕР·РІСЂР°С‰Р°РµС‚ РєРѕР»РёС‡РµСЃС‚РІРѕ Р·Р°РїРёСЃР°РЅРЅС‹С… Р·РЅР°С‡РµРЅРёР№ РґР°РІР»РµРЅРёСЏ
+	char temp[105] = {};//С„РѕСЂРјРёСЂСѓРµРј РёРјСЏ РґР»СЏ С„Р°Р№Р»Р°
+	create_name(temp);//РЅР°Р·РІР°РЅРёРµ РґР»СЏ С„Р°Р№Р»Р°
+	ifstream infile(temp, ios::binary);//РїРѕС‚РѕРє РґР»СЏ С‡С‚РµРЅРёСЏ
+	infile.seekg(0, ios::end);//РЅР°С…РѕРґРёРј РєРѕР»РёС‡РµСЃС‚РІРѕ Р·РЅР°С‡РµРЅРёР№ РґР°РІР»РµРЅРёСЏ РІ С„Р°Р№Р»Рµ
 	int size_pressure = infile.tellg();
 	unsigned number_of_pressure = (size_pressure - sizeof(person)) / sizeof(pressure);
 	return number_of_pressure;
 }
-void man::read_pressure(unsigned int n) {//считывает последние n значений
-	char temp[105] = {};//формируем имя для файла
-	create_name(temp);//название для файла
-	ifstream infile(temp, ios::binary);//поток для чтения
+void man::read_pressure(unsigned int n) {//СЃС‡РёС‚С‹РІР°РµС‚ РїРѕСЃР»РµРґРЅРёРµ n Р·РЅР°С‡РµРЅРёР№
+	char temp[105] = {};//С„РѕСЂРјРёСЂСѓРµРј РёРјСЏ РґР»СЏ С„Р°Р№Р»Р°
+	create_name(temp);//РЅР°Р·РІР°РЅРёРµ РґР»СЏ С„Р°Р№Р»Р°
+	ifstream infile(temp, ios::binary);//РїРѕС‚РѕРє РґР»СЏ С‡С‚РµРЅРёСЏ
 	unsigned int number_of_pressure = number_of_datapressure();
 	if (number_of_pressure < n) {
-		cout << "У вас только " << number_of_pressure << " записанных значений давления" << endl;
+		cout << "РЈ РІР°СЃ С‚РѕР»СЊРєРѕ " << number_of_pressure << " Р·Р°РїРёСЃР°РЅРЅС‹С… Р·РЅР°С‡РµРЅРёР№ РґР°РІР»РµРЅРёСЏ" << endl;
 		n = number_of_pressure;
 	}
-	for (unsigned int i = 0; i < n; i++) {//вывод n значений давления
-		infile.seekg((-1)*(signed)((i + 1) * sizeof(pressure)), ios::end);//переставляем указатель на данные c давлением
+	for (unsigned int i = 0; i < n; i++) {//РІС‹РІРѕРґ n Р·РЅР°С‡РµРЅРёР№ РґР°РІР»РµРЅРёСЏ
+		infile.seekg((-1)*(signed)((i + 1) * sizeof(pressure)), ios::end);//РїРµСЂРµСЃС‚Р°РІР»СЏРµРј СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РґР°РЅРЅС‹Рµ c РґР°РІР»РµРЅРёРµРј
 		infile.read(reinterpret_cast<char*>(&pressure), sizeof(pressure));
 		pressure.show_data();
 	}

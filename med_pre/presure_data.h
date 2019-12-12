@@ -1,5 +1,5 @@
-#pragma once
-class pressure_data {//структура для хранения значений давления
+п»ї#pragma once
+class pressure_data {//СЃС‚СЂСѓРєС‚СѓСЂР° РґР»СЏ С…СЂР°РЅРµРЅРёСЏ Р·РЅР°С‡РµРЅРёР№ РґР°РІР»РµРЅРёСЏ
 public:
 	int up_pressure;
 	int down_pressure;

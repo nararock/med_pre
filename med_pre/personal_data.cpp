@@ -1,26 +1,26 @@
-#include "stdafx.h"
+п»ї#include "stdafx.h"
 #include <iostream>
 #include "personal_data.h"
 using std::cout;
 using std::cin;
 using std::endl;
-//конструктор класса
-personal_data::personal_data() : name("\0"), surname("\0"), age(0), gender('\0') {};//конструктор по умолчанию
-//методы класса
-void personal_data::put_data() {//заполнение полей структуры
-		cout << "Введите ваше имя (строчными буквами)" << endl;
+//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР°
+personal_data::personal_data() : name("\0"), surname("\0"), age(0), gender('\0') {};//РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ
+//РјРµС‚РѕРґС‹ РєР»Р°СЃСЃР°
+void personal_data::put_data() {//Р·Р°РїРѕР»РЅРµРЅРёРµ РїРѕР»РµР№ СЃС‚СЂСѓРєС‚СѓСЂС‹
+		cout << "Р’РІРµРґРёС‚Рµ РІР°С€Рµ РёРјСЏ (СЃС‚СЂРѕС‡РЅС‹РјРё Р±СѓРєРІР°РјРё)" << endl;
 		cin >> name;
-		cout << "Введите ваше фамилия (строчными буквами)" << endl;
+		cout << "Р’РІРµРґРёС‚Рµ РІР°С€Рµ С„Р°РјРёР»РёСЏ (СЃС‚СЂРѕС‡РЅС‹РјРё Р±СѓРєРІР°РјРё)" << endl;
 		cin >> surname;
-		cout << "Введите ваш возраст" << endl;
+		cout << "Р’РІРµРґРёС‚Рµ РІР°С€ РІРѕР·СЂР°СЃС‚" << endl;
 		cin >> age;
-		cout << "Введите ваш пол: ж - если женщина, м - если мужчина" << endl;
+		cout << "Р’РІРµРґРёС‚Рµ РІР°С€ РїРѕР»: Р¶ - РµСЃР»Рё Р¶РµРЅС‰РёРЅР°, Рј - РµСЃР»Рё РјСѓР¶С‡РёРЅР°" << endl;
 		cin >> gender;
 }
-void personal_data::show_data() {//вывод полей структуры
-		cout << "Имя: " << name << endl;
-		cout << "Фамилия: " << surname << endl;
-		cout << "Пол: " << gender << endl;
-		cout << "Возраст: " << age << endl;
+void personal_data::show_data() {//РІС‹РІРѕРґ РїРѕР»РµР№ СЃС‚СЂСѓРєС‚СѓСЂС‹
+		cout << "РРјСЏ: " << name << endl;
+		cout << "Р¤Р°РјРёР»РёСЏ: " << surname << endl;
+		cout << "РџРѕР»: " << gender << endl;
+		cout << "Р’РѕР·СЂР°СЃС‚: " << age << endl;
 		cout << " " << endl;
 }
